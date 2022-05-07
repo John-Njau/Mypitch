@@ -1,0 +1,6 @@
+*.idea
+*.pyc
+*.sh
+env/
+instance/
+*.db
