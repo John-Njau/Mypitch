@@ -1,0 +1,9 @@
+.sidebar{
+    background-color: blue;
+    /* display: flex!important; */
+}
+
+#navbar{
+    display: flex!important;
+    /* flex-direction: column; */
+}
