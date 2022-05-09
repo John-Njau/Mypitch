@@ -1,0 +1,16 @@
+.card-columns{
+    column-count: 4;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* border: 1px solid #dee2e6; */
+    margin: auto auto;
+}
+.card{
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    /* margin: 0.75rem; */
+    margin: 0.5rem;
+}
+.jumbotron{
+    background-color: #c91919!important;
+}
