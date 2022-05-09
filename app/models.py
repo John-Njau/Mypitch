@@ -45,22 +45,24 @@ class Pitch(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     pitchtext = db.Column(db.String(255), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    category = db.Column(db.String(255), nullable=False)
+    comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
 
     def save_pitch(self):
-        db.session.add()
+        db.session.add(self)
         db.session.commit()
 
     def delete_pitch(self):
         db.session.delete(self)
         db.session.commit()
 
-
 class Comment(db.Model):
     __tablename__ = 'comment'
 
     id = db.Column(db.Integer, primary_key=True)
-    commenttext = db.Column(db.String(255), nullable=False)
+    commenttext = db.Column(db.Text())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'), nullable=False)
 
