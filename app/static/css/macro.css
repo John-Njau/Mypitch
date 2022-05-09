@@ -1,7 +1,7 @@
 .card-columns{
-    column-count: 4;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
+    /* column-count: 4; */
+    display: flex;
+    flex-wrap: wrap;
     /* border: 1px solid #dee2e6; */
     margin: auto auto;
 }
@@ -9,8 +9,18 @@
     border: 1px solid #dee2e6;
     border-radius: 0.75rem;
     /* margin: 0.75rem; */
-    margin: 0.5rem;
+    margin: 1.5rem;
+    padding: 1rem;
+    width: 20em;
 }
 .jumbotron{
-    background-color: #c91919!important;
+    background-color: #1fbb2c!important;
+}
+
+.card-footer{
+    display: flex;
+    
+}
+.card-footer>a{
+margin: 3px;
 }
