@@ -15,17 +15,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pitchdb.db'
 # flask extensions initialization
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
-mail = Mail(app)
+mail = Mail()
 login_manager = LoginManager(app)
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 simple = SimpleMDE(app)
 mail = Mail(app)
+photos = UploadSet('photos', IMAGES)
 
 def create_app(config_name):
     # app configurations
     app.config.from_object(config_options[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    #mail instance
+    mail.init_app(app)
+    
     
     #main blueprint
     from .main import main as main_blueprint
