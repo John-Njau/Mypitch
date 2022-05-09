@@ -49,6 +49,8 @@ class Pitch(UserMixin, db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     category = db.Column(db.String(255), nullable=False)
     comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
+    upvotes = db.relationship('UpVote', backref='pitch', lazy='dynamic')
+    downvotes = db.relationship('DownVote', backref='pitch', lazy='dynamic')
 
     def save_pitch(self):
         db.session.add(self)
@@ -71,5 +73,37 @@ class Comment(db.Model):
         db.session.commit()
 
     def delete_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+class Upvotes(db.Model):
+    __tablename__ = 'upvotes'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    upvotes = db.Column(db.Integer, default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
+    
+    def save_upvotes(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def delete_upvotes(self):
+        db.session.delete(self)
+        db.session.commit()
+        
+class Downvotes(db.Model):
+    __tablename__ = 'downvotes'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    downvotes = db.Column(db.Integer,default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
+    
+    def save_downvotes(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    def delete_downvotes(self):
         db.session.add(self)
         db.session.commit()
