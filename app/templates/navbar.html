@@ -20,16 +20,16 @@
           <a class="nav-link" href="/">Home</a>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="/Business">Business</a>
+          <a class="nav-link" href="/business">Business</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/technology">Tech</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/sports">Sports</a>
+          <a class="nav-link" href="/science">Science</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/Health">Health</a>
+          <a class="nav-link" href="/health">Health</a>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
       <ul class="nav navbar-nav navbar-right">
         {% if current_user.is_authenticated %}
         <li>
-          <a href="{{url_for('main.index', username=current_user.username)}}"
+          <a href="{{url_for('main.profile', uname=current_user.username)}}"
             >Profile</a
           >
         </li>

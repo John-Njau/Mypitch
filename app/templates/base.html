@@ -16,17 +16,18 @@
       rel="stylesheet"
     />
     {% endblock %}
-    <div class="" id="wrap">
-      <div class="d-flex">
-        <!-- <div class="sidebar" style="width: 200px;">
+
+        <div class="">
+          <!-- <div class="sidebar" style="width: 200px;">
                 {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
                 cytdtrx
             </div> -->
-        <div class="navbar">
-          {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+          <div class="navbar">
+            {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+          </div>
         </div>
-      </div>
-    </div>
+    
+
     {% block content %} {% endblock %}
   </body>
   {% endblock %}

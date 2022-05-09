@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block styles %} {{super()}}
+<link
+  href="{{url_for('static',filename='css/pitches.css')}}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <h2 class="text-center">Comment</h2>
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}<br />
+        {{ form.comment.label() }} {{ form.comment }} <br />
+        {{ form.submit }}
+      </form>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h2 class="text-center">Comments</h2>
+      {% for comment in comments %}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{comment.comment}}</h5>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
