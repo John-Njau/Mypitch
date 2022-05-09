@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>My Pitch</title>
+    {% endif %} {% extends 'bootstrap/base.html'%}
+  </head>
+  {% block body %}
+  <body>
+    {% block styles %} {{super()}}
+    <link
+      href="{{url_for('static',filename='css/base.css')}}"
+      rel="stylesheet"
+    />
+    {% endblock %}
+    <div class="" id="wrap">
+      <div class="d-flex">
+        <!-- <div class="sidebar" style="width: 200px;">
+                {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+                cytdtrx
+            </div> -->
+        <div class="navbar">
+          {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+        </div>
+      </div>
+    </div>
+    {% block content %} {% endblock %}
+  </body>
+  {% endblock %}
+</html>

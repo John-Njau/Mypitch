@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% macro display_comments(comments) %}
+<div class="container">
+</div>
+<div class="card-columns">
+    {% for comment in comments %}
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <p>{{comment.comment}}</p>
+        </div>
+         <p class="text-center">{{comment.post.title}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endmacro %}
+
+

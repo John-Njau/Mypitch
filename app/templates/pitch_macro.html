@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% macro displayPitches(allpitches) %} {% block styles
+%} {{super()}}
+<link href="{{url_for('static',filename='css/macro.css')}}" rel="stylesheet" />
+{% endblock %}
+<div class="container-fluid">
+  <br /><br />
+  <div class="jumbotron">
+    <div class="overlay">
+      <h1 class="text-center">All Pitches</h1>
+      <a href="{{url_for('main.new_pitch')}}"
+        ><button class="btn">New Pitch</button></a>
+        <!-- <a href=""> <button class="btn"> My profile </button> </a> -->
+    </div>
+  </div>
+  <div class="card-columns">
+    {% for pitch in allpitches %}
+    <div class="card">
+      <div class="card-body">
+        <p>Title: {{pitch.title}}</p>
+        <br />
+        Category: {{pitch.category}}
+        <p>{{pitch.pitchtext}}</p>
+        <br />
+
+        <p>{{pitch.date_created}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

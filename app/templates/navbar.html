@@ -1,0 +1,58 @@
+{% block content %}
+<link href="{{url_for('static',filename='css/navbar.css')}}" rel="stylesheet" />
+<div class="navbar">
+  <div class="container-fluid">
+    <div class="to-flex">
+      <div>
+        <img
+          src="{{url_for('static',filename='Assets/favicon.ico')}}"
+          class="me-2"
+          alt=""
+          width=""
+          height=""
+        />
+        <a class="brand-name" href="/">My pitch</a>
+    </div>
+  </div>
+    <div class="homelinks">
+      <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/Business">Business</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/technology">Tech</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/sports">Sports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Health">Health</a>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-collapse no-collapse">
+      <!-- <ul class="nav navbar-nav"> -->
+        <!-- <li><a href="/">Home</a></li>  -->
+      <!-- </ul> -->
+      <ul class="nav navbar-nav navbar-right">
+        {% if current_user.is_authenticated %}
+        <li>
+          <a href="{{url_for('main.index', username=current_user.username)}}"
+            >Profile</a
+          >
+        </li>
+        <!-- <li style="padding: 15px; color: white">{{current_user.username}}</li> -->
+        <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
+        {% else %}
+        <li><a href="{{url_for('auth.login')}}">Log In</a></li>
+        <li><a href="{{url_for('auth.signup')}}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div> 
+    </div>
+  </div>
+</div>
+{% endblock%}

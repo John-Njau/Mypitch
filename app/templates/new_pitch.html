@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block styles %} {{super()}}
+<link
+  href="{{url_for('static',filename='css/pitches.css')}}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="col-md-2"></div>
+  <div class="col-md-8 text-center">
+    <h2 class="text-center">Create Your Pitch</h2>
+    <form action="" method="POST">
+      {{ form.category.label() }} {{ form.category }} <br />
+      {{ form.hidden_tag() }} {{form.title.label()}} {{ form.title }} <br />
+      {{ form.pitchtext.label() }} {{ form.pitchtext }} <br />
+
+      {{ form.submit }}
+    </form>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+{% endblock %}

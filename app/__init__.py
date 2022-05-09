@@ -26,9 +26,6 @@ def create_app(config_name):
     # app configurations
     app.config.from_object(config_options[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    # app.config['SECRET_KEY'] = 'ketyzdxfcghj'
-    # app.config['SQLALCHEMY_db_URI'] = 'sqlite:///pitchdb.db'
-    
     
     #main blueprint
     from .main import main as main_blueprint

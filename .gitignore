@@ -5,3 +5,4 @@ env/
 instance/
 *.db
 *.env
+migrations/
