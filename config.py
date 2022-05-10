@@ -2,6 +2,8 @@ import os
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = 'postgres://qplimxwduuflyi:b6e1f62b9a7462f2152f7f57ea80155e112adb4b86f986a17e301e187b154d31@ec2-54-172-175-251.compute-1.amazonaws.com:5432/de0el35k0asfhf'
+
     # UPLOADED_PHOTOS_DEST = 'app/static/photos'
     
     #email configurations
@@ -13,7 +15,7 @@ class Config:
     
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgres://vgksglwxuyjrpr:59b4e4d0e47fb6d6ca798c8d1021b43800f17b5a911951b73bbfe617cb6130ab@ec2-54-164-40-66.compute-1.amazonaws.com:5432/demm736i6va5ib'
+    SQLALCHEMY_DATABASE_URI = 'postgres://qplimxwduuflyi:b6e1f62b9a7462f2152f7f57ea80155e112adb4b86f986a17e301e187b154d31@ec2-54-172-175-251.compute-1.amazonaws.com:5432/de0el35k0asfhf'
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchdb'
     # DEBUG = True
 
