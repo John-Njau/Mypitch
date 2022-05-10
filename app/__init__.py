@@ -8,8 +8,8 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 # app initialization
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pitchdb.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pitchdb.db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 # flask extensions initialization
 bootstrap = Bootstrap(app)
