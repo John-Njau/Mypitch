@@ -1,6 +1,5 @@
 *.idea
 *.pyc
-*.sh
 env/
 instance/
 *.env
