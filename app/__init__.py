@@ -10,7 +10,7 @@ from flask_uploads import UploadSet, IMAGES
 # app initialization
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pitchdb.db'
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 # flask extensions initialization
 bootstrap = Bootstrap(app)
@@ -26,7 +26,6 @@ photos = UploadSet('photos', IMAGES)
 def create_app(config_name):
     # app configurations
     app.config.from_object(config_options[config_name])
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     #mail instance
     mail.init_app(app)
