@@ -5,7 +5,7 @@ from config import config_options
 from flask_mail import Mail
 from flask_login import LoginManager
 from flask_simplemde import SimpleMDE
-from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_uploads import UploadSet, IMAGES
 
 # app initialization
 app = Flask(__name__)
