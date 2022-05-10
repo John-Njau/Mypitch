@@ -14,7 +14,6 @@ class Config:
     
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchdb'
     DEBUG = True
 
 
@@ -31,9 +30,6 @@ class ProdConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    
-    
-    DEBUG = True
 
 
 
