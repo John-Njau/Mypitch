@@ -4,8 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import config_options
 from flask_mail import Mail
 from flask_login import LoginManager
-from flask_simplemde import SimpleMDE
-from flask_uploads import UploadSet, IMAGES
+from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 # app initialization
 app = Flask(__name__)
@@ -19,7 +18,6 @@ mail = Mail()
 login_manager = LoginManager(app)
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
-simple = SimpleMDE(app)
 mail = Mail(app)
 photos = UploadSet('photos', IMAGES)
 
@@ -29,6 +27,9 @@ def create_app(config_name):
     
     #mail instance
     mail.init_app(app)
+    
+    #configure upload set
+    configure_uploads(app, photos)
     
     
     #main blueprint

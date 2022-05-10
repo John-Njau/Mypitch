@@ -1,5 +1,4 @@
 import os
-from plistlib import load
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,7 +6,7 @@ load_dotenv()
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchdb'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
     
     #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -22,6 +21,7 @@ class ProdConfig(Config):
     # DEBUG = True
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+    # pass
     
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchdb'.replace("://","ql://",1)
     # SECRET_KEY = os.environ.get('SECRET_KEY')
