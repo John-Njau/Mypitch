@@ -24,7 +24,7 @@ class ProdConfig(Config):
     if uri and uri.startswith('postgres://'):
         uri = uri.replace('postgres://', 'postgresql://', 1)
         
-    
+    SQLALCHEMY_DATABASE_URI = uri
     # pass
     
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/pitchdb'.replace("://","ql://",1)
