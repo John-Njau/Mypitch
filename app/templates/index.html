@@ -8,6 +8,7 @@
 </div>
 </div>
 {% block content %}
+
 {% if current_user.is_authenticated %}
 <div class="container-fluid">
   <div class="row">
@@ -49,17 +50,30 @@
         </ul>
         <hr />
       </div>
-
-
-      {% else %}
+      <div class="col-md-10">
+        <div class="image text-center lead">
+          <h3 text-center>What's your Big idea?</h3>
+          <img src="https://i.postimg.cc/fRkMBBQG/photodune-4187216-idea-m.webp" width="500vw">
+          <div>
+            {{ displayPitches(allpitches) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-md-2">
       <div class="overlays">
-        <a href="{{url_for('main.new_pitch')}}" class="text-center"><button class="btn">Create New Pitch</button></a>
+        <a href="{{url_for('main.new_pitch')}}" class="text-center"><button class="btn">Create New
+            Pitch</button></a>
         <br>
         <br>
         <a href="{{url_for('auth.signup')}}"><button class="btn">Sign Up</button>
       </div>
     </div>
-    {% endif %}
     <div class="col-md-10">
       <div class="image text-center lead">
         <h3 text-center>What's your Big idea?</h3>
@@ -71,4 +85,5 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock %}
