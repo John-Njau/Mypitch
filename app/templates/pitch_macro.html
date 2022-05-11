@@ -2,32 +2,21 @@
 %} {{super()}}
 <link href="{{url_for('static',filename='css/macro.css')}}" rel="stylesheet" />
 {% endblock %}
-<div class="container-fluid">
-  <div class="col-md-2">
-    <div class="jumbotron">
-      <div class="overlay">
-        <a href="{{url_for('main.new_pitch')}}" class="text-center"
-          ><button class="btn">Create New Pitch</button></a
-        >
-        <!-- <a href=""> <button class="btn"> My profile </button> </a> -->
-      </div>
-    </div>
-  </div>
-  <div class="col-md-10">
-    <h1 class="text-center">All Pitches</h1>
+<div class="container-fluid text-center">
+  <div class="col-md-12">
+    <h1 class="text-center text-primary bg-dark">All Pitches</h1>
     <div class="card-columns">
       {% for pitch in allpitches %}
-      <div class="card m-3 p-3">
+      <div class="card cardi m-3 p-3">
         <div class="card-body">
-          <p>Title: <span class="h4 b-3">{{pitch.title}}</span> </p>
+          <p><h4>Title: </h4> <span class="h3 b-3">{{pitch.title}}</span> </p>
           <br />
-          Category: <span class="h5 b-3">{{pitch.category}}</span>
+          <h4>Category: </h4> <span class="h3 b-3">{{pitch.category}}</span>
           <br>
           <hr>
           <p>{{pitch.pitchtext}}</p>
           <br />
-          <!-- <p>pitch by: <span>{{users}}</span></p> -->
-          <p>{{pitch.date_created  }}</p>
+          <p> <h4>{{pitch.date_created }}</h4> </p>
         </div>
         <hr />
         <div class="card-footer mx-auto">
@@ -49,6 +38,6 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+</div>
 </div>
 {% endmacro %}

@@ -3,7 +3,8 @@ from flask_login import current_user, login_required
 from app.models import User, Pitch, Comment, Upvote, Downvote
 from .forms import PitchForm, CommentsForm, UpdateProfile
 from . import main
-from .. import db
+from .. import db, photos
+
 
 @main.route('/')
 def index():
@@ -11,12 +12,12 @@ def index():
     users =current_user
     return render_template('index.html', allpitches=allpitches, users=users)
 
-
 @main.route('/pitches')
 @login_required
-def pitches():
+def pitches(id):
     allpitches = Pitch.query.all()
-    return render_template('pitches.html', allpitches=allpitches, user=current_user)
+    user = User.query.get(id)
+    return render_template('pitches.html', allpitches=allpitches, user=user)
 
 @main.route('/new_pitch', methods=['GET', 'POST'])
 @login_required
@@ -32,6 +33,8 @@ def new_pitch():
 @main.route('/comments/<int:id>', methods=['GET', 'POST'])
 @login_required
 def comments(id):
+    allcomments =Comment.query.all()
+    # allcomments = Comment.query.filter_by(pitch_id=id).all()
     form = CommentsForm()
     pitch = Pitch.query.get(id)
     user = User.query.get(id)
@@ -40,7 +43,7 @@ def comments(id):
         new_comment = Comment(commenttext=form.comment.data, pitch_id=id, user_id=current_user.id)
         new_comment.save_comment()
         return redirect('/comments/{pitch_id}'.format(pitch_id=id))
-    return render_template('comments.html', form=form, comments=comments, pitch=pitch, user=user)
+    return render_template('comments.html', form=form, comments=comments, allcomments=allcomments, pitch=pitch, user=user)
 
 @main.route('/upvote/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -86,16 +89,16 @@ def business():
 
 
 # UPDATE REQUESTS
-# @main.route('/user/<uname>/update/pic', methods=['POST'])
-# @login_required
-# def update_pic(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if 'photo' in request.files:
-#         filename = photos.save(request.files['photo'])
-#         path = f'photos/{filename}'
-#         user.profile_pic_path = path
-#         db.session.commit()
-#     return redirect(url_for('main.profile', uname=uname))
+@main.route('/user/<uname>/update/pic', methods=['POST'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
+    return redirect(url_for('main.profile', uname=uname))
 
 @main.route('/user/<uname>/update', methods=['GET', 'POST'])
 @login_required
@@ -125,3 +128,8 @@ def profile(uname):
         abort(404)
         
     return render_template("profile/profile.html", user=user)
+
+@main.route('/user/<pitches>', methods=['GET', 'POST'])
+def mypitches():
+    allpitches = User.query.filter_by(pitches=pitches).all()
+    return render_template('my_pitches.html', allpitches=allpitches)

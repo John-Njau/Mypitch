@@ -4,13 +4,71 @@
 <link href="{{url_for('static',filename='css/index.css')}}" rel="stylesheet" />
 {% endblock %}
 <div class="container-fluid">
-  <div class="col-sm-8 col-md-8">
-    {% block navbar %} {% include "navbar.html" %} {% endblock %}
-  </div>
+  {% block navbar %} {% include "navbar.html" %} {% endblock %}
+</div>
 </div>
 {% block content %}
-<div>
-     {{ displayPitches(allpitches) }}
+{% if current_user.is_authenticated %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-md-2">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 150px; height:100vh">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <span class="fs-4"> {{current_user.username}}'s</span> Profile</span>
+        </a>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li>
+            <a href="/" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              All Pitches
+            </a>
+          </li>
+          <li>
+            <a href="/new_pitch" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#table" />
+              </svg>
+              New pitch
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url_for('main.profile', uname=current_user.username)}}" class="nav-link active"
+              aria-current="page">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#home" />
+              </svg>
+              Home
+            </a>
+          </li>
+        </ul>
+        <hr />
+      </div>
+
+
+      {% else %}
+      <div class="overlays">
+        <a href="{{url_for('main.new_pitch')}}" class="text-center"><button class="btn">Create New Pitch</button></a>
+        <br>
+        <br>
+        <a href="{{url_for('auth.signup')}}"><button class="btn">Sign Up</button>
+      </div>
+    </div>
+    {% endif %}
+    <div class="col-md-10">
+      <div class="image text-center lead">
+        <h3 text-center>What's your Big idea?</h3>
+        <img src="https://i.postimg.cc/fRkMBBQG/photodune-4187216-idea-m.webp" width="500vw">
+        <div>
+          {{ displayPitches(allpitches) }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

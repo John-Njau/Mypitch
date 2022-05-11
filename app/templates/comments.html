@@ -21,12 +21,16 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <h2 class="text-center">Comments</h2>
-      {% for comment in comments %}
+      {% for comment in allcomments %}
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{comment.comment}}</h5>
+
+          <h5 class="card-title">{{comment.commenttext}}</h5>
+          <h4>{{user.username}}</h4>
+        </div>
       </div>
+      {% endfor %}
+    </div>
+    {% endblock %}
   </div>
-  {% endfor %}
 </div>
-{% endblock %}

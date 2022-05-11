@@ -7,7 +7,14 @@
     {% else %}
     <title>My Pitch</title>
     {% endif %} {% extends 'bootstrap/base.html'%}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Macondo&family=Montserrat:wght@200;500&family=Nunito+Sans:wght@200&family=Poppins:ital,wght@0,100;0,200;0,300;1,300&family=Raleway:ital,wght@0,300;0,500;1,200&display=swap"
+      rel="stylesheet"
+    />
   </head>
+ 
   {% block body %}
   <body>
     {% block styles %} {{super()}}
@@ -17,16 +24,15 @@
     />
     {% endblock %}
 
-        <div class="">
-          <!-- <div class="sidebar" style="width: 200px;">
+    <div class="">
+      <!-- <div class="sidebar" style="width: 200px;">
                 {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
                 cytdtrx
             </div> -->
-          <div class="navbar">
-            {% block navbar %} {% include 'navbar.html' %} {% endblock %}
-          </div>
-        </div>
-    
+      <div class="navbar">
+        {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+      </div>
+    </div>
 
     {% block content %} {% endblock %}
   </body>

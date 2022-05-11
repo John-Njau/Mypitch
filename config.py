@@ -4,7 +4,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     # SQLALCHEMY_DATABASE_URI = 'postgresql://qplimxwduuflyi:b6e1f62b9a7462f2152f7f57ea80155e112adb4b86f986a17e301e187b154d31@ec2-54-172-175-251.compute-1.amazonaws.com:5432/de0el35k0asfhf'
 
-    # UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
     
     #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'

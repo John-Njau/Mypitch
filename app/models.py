@@ -19,6 +19,12 @@ class User(UserMixin, db.Model):
     password_hashed = db.Column(db.String(128))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
+    pitches = db.relationship('Pitch', backref='user', lazy='dynamic')
+    # pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
+    # comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    # upvotes = db.relationship('Upvote', backref='user', lazy='dynamic')
+    # downvotes = db.relationship('Downvote', backref='user', lazy='dynamic')
+    # db.Column(db.Integer, db.ForeignKey('pitches.id'))
     # pitch_id = db.Column(db.Integer, db.ForeignKey('pitch.id'))
 
     @property
@@ -51,7 +57,6 @@ class Pitch(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     category = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    # user = db.relationship('User', backref='pitch', lazy='dynamic')
     comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref='pitch', lazy='dynamic')
     downvotes = db.relationship('Downvote', backref='pitch', lazy='dynamic')

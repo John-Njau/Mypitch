@@ -13,5 +13,5 @@ class CommentsForm(FlaskForm):
     submit = SubmitField('Post')
         
 class UpdateProfile(FlaskForm):
-    bio = StringField('Bio', validators=[DataRequired()])
+    bio = TextAreaField('Bio', validators=[DataRequired()])
     submit = SubmitField('Save')

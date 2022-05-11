@@ -3,17 +3,19 @@
 <div class="container">
 </div>
 <div class="card-columns">
-    {% for comment in comments %}
+    {% for comment in allcomments %}
     <div class="card">
         <div class="card-header">
         </div>
         <div class="card-body">
-            <p>{{comment.comment}}</p>
+            <p>{{comment.commenttext}}</p>
         </div>
-         <p class="text-center">{{comment.post.title}}</p>
+         <p class="text-center">{{comment.user_id}}</p>
     </div>
     {% endfor %}
 </div>
+<div>
+
 
 {% endmacro %}
 
