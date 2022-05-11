@@ -13,7 +13,6 @@ app = Flask(__name__)
 # uri = os.getenv('DATABASE_URL')
 # if uri and uri.startswith('postgres://'):
 #     uri = uri.replace('postgres://', 'postgresql://', 1)
-        
 #     SQLALCHEMY_DATABASE_URI = uri
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pitchdb.db'
 # app.config['SQLALCHEMY_DATABASE_URI']='postgresql://vgksglwxuyjrpr:59b4e4d0e47fb6d6ca798c8d1021b43800f17b5a911951b73bbfe617cb6130ab@ec2-54-164-40-66.compute-1.amazonaws.com:5432/demm736i6va5ib'
