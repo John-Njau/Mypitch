@@ -1,4 +1,4 @@
-# News Hub
+# My Pitch
 
 An application that allows users to submit their pitches for impact.
 
