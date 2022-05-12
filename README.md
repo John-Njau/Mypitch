@@ -51,7 +51,7 @@ To Run this app in your machine, you need to:
 
 This is the live link to the site
 
-<a>https://my1minpitch.herokuapp.com/</a>
+<a>https://mynewpitch.herokuapp.com/</a>
 
 # Technologies Used
 
